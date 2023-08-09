@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+    "version": "1.0.0",
+    "name": "StackOverfocus",
+    "description": "Remove distractions from StackExchange websites.",
+    "icons": {
+        "128": "icon.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.stackexchange.com/questions/*",
+                "*://stackoverflow.com/questions/*",
+                "*://superuser.com/questions/*",
+                "*://serverfault.com/questions/*",
+                "*://askubuntu.com/questions/*"
+            ],
+            "css": ["content_style.css"],
+            "js": ["content_script.js"],
+            "run_at": "document_start"
+        }
+    ],
+    "browser_specific_settings": {
+        "gecko": {
+          "id": "stackoverfocus@yusacetin.github.io"
+        }
+      }
+}
