@@ -76,6 +76,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }catch(err){console.log("Unable to hide: js-dismissable-hero")}
     // Make page visible again
     var page = document.getElementsByTagName('html')[0];
-    page.style.display = 'block';
+    page.style.visibility = 'visible';
     console.log("StackOverfocus finished");
 });
