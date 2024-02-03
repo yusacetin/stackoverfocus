@@ -10,6 +10,9 @@ Remove basically everything other than the question, comments, and answers from 
 * Click "Load unpacked" at the top left
 * Select the [project root]/build/chrome/unpacked folder
 #### Firefox
+#### Install from the Mozilla Addons Store
+* Install the add-on from https://addons.mozilla.org/en-US/firefox/addon/stackoverfocus/
+#### Install from source
 * Clone or download the files
 * Run `make firefox` in the project root directory
 * Sign the file [project root]/build/firefox/stackexchange_focused_firefox.zip somehow. Firefox makes this painfully complicated.
