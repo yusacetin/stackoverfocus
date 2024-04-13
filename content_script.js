@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
         var more_related_questions = document.getElementById("inline_related_see_more");
         more_related_questions.style.display = 'none';
-    }catch(err){console.log("Unable to hide: mainbar")}
+    }catch(err){console.log("Unable to hide: inline_related_see_more")}
     // Footer
     try{
         var footer = document.getElementById("footer");
@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
             js_dismissable_heros[i].style.display = 'none';
         }
     }catch(err){console.log("Unable to hide: js-dismissable-hero")}
+
     // Make page visible again
     var page = document.getElementsByTagName('html')[0];
     page.style.visibility = 'visible';
