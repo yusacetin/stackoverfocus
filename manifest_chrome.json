@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
-    "version": "1.0.0",
-    "version_name": "1.0.0",
+    "version": "1.0.1",
+    "version_name": "1.0.1",
     "name": "StackOverfocus",
     "description": "Remove distractions from StackExchange websites.",
     "host_permissions": [
