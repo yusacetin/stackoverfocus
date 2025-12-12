@@ -1,3 +1,37 @@
+const keys = [
+    "related-questions-input",
+    "more-related-questions-input",
+    "left-sidebar-input",
+    "right-sidebar-input",
+    "top-bar-input",
+    "question-header-input",
+    "content-border-input",
+    "post-form-input",
+    "bottom-notice-input",
+    "footer-input",
+    "consent-banner-input",
+    "dismissable-hero-input",
+    "js-bottom-notice-input"
+]
+
+function hideRelatedQuestions() {
+    try {
+        var related_questions = document.getElementById("inline_related_var_a_less");
+        related_questions.style.display = 'none';
+    } catch (err) {
+        console.log("Unable to hide: inline_related_var_a_less");
+    }
+}
+
+function hideMoreRelatedQuestions() {
+    try {
+        var more_related_questions = document.getElementById("inline_related_see_more");
+        more_related_questions.style.display = 'none';
+    } catch (err) {
+        console.log("Unable to hide: inline_related_see_more");
+    }
+}
+
 function hideLeftSidebar() {
     try {
         var left_sidebar_elements = document.getElementsByClassName('left-sidebar');
@@ -68,24 +102,6 @@ function hideBottomNotice() {
     }
 }
 
-function hideRelatedQuestions() {
-    try {
-        var related_questions = document.getElementById("inline_related_var_a_less");
-        related_questions.style.display = 'none';
-    } catch (err) {
-        console.log("Unable to hide: inline_related_var_a_less");
-    }
-}
-
-function hideMoreRelatedQuestions() {
-    try {
-        var more_related_questions = document.getElementById("inline_related_see_more");
-        more_related_questions.style.display = 'none';
-    } catch (err) {
-        console.log("Unable to hide: inline_related_see_more");
-    }
-}
-
 function hideFooter() {
     try{
         var footer = document.getElementById("footer");
@@ -133,25 +149,93 @@ function hideJSBottomNotice() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+// Reference: https://stackoverflow.com/a/57551361
+async function run() {
     console.log("Running StackOverfocus");
-    
-    hideLeftSidebar();
-    hideRightSidebar();
-    hideTopBar();
-    hideQuestionHeader();
-    hideContentBorder();
-    hidePostForm();
-    hideBottomNotice();
-    hideRelatedQuestions();
-    hideMoreRelatedQuestions();
-    hideFooter();
-    hideJSConsentBanner();
-    hideJSDismissableHero();
-    hideJSBottomNotice();
+    return new Promise((resolve, reject) => {
+        try{
+            chrome.storage.local.get(
+                keys,
+                function(values) {
+                    /*
+                    "related-questions-input",
+                    "more-related-questions-input",
+                    "left-sidebar-input",
+                    "right-sidebar-input",
+                    "top-bar-input",
+                    "question-header-input",
+                    "content-border-input",
+                    "post-form-input",
+                    "bottom-notice-input",
+                    "footer-input",
+                    "consent-banner-input",
+                    "dismissable-hero-input",
+                    "js-bottom-notice-input"
+                    */
 
-    // Make page visible again (it loads as invisible through content_style.css)
-    var page = document.getElementsByTagName('html')[0];
-    page.style.visibility = 'visible';
-    console.log("StackOverfocus finished");
+                    if (values["related-questions-input"] != "1") { // use != "1" because if the value is not saved previously it might default to "undefined", in which case we also want to hide
+                        hideRelatedQuestions();
+                    }
+
+                    if (values["more-related-questions-input"] != "1") {
+                        hideMoreRelatedQuestions();
+                    }
+
+                    if (values["left-sidebar-input"] != "1") {
+                        hideLeftSidebar();
+                    }
+
+                    if (values["right-sidebar-input"] != "1") {
+                        hideRightSidebar();
+                    }
+
+                    if (values["top-bar-input"] != "1") {
+                        hideTopBar();
+                    }
+
+                    if (values["question-header-input"] != "1") {
+                        hideQuestionHeader();
+                    }
+
+                    if (values["content-border-input"] != "1") {
+                        hideContentBorder();
+                    }
+
+                    if (values["post-form-input"] != "1") {
+                        hidePostForm();
+                    }
+
+                    if (values["bottom-notice-input"] != "1") {
+                        hideBottomNotice();
+                    }
+
+                    if (values["footer-input"] != "1") {
+                        hideFooter();
+                    }
+
+                    if (values["consent-banner-input"] != "1") {
+                        hideJSConsentBanner();
+                    }
+
+                    if (values["dismissable-hero-input"] != "1") {
+                        hideJSDismissableHero();
+                    }
+
+                    if (values["js-bottom-notice-input"] != "1") {
+                        hideJSBottomNotice();
+                    }
+
+                    // Make page visible again (it loads as invisible through content_style.css)
+                    var page = document.getElementsByTagName('html')[0];
+                    page.style.visibility = 'visible';
+                    console.log("StackOverfocus finished");
+                });
+        } catch(exc) {
+            console.log(exc);
+        }
+    })
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    run();
 });

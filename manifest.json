@@ -1,9 +1,10 @@
 {
     "manifest_version": 3,
-    "version": "1.0.2",
-    "version_name": "1.0.2",
+    "version": "2.0.0",
+    "version_name": "2.0.0",
     "name": "StackOverfocus",
     "description": "Remove distractions from StackExchange websites.",
+    "permissions": ["storage"],
     "host_permissions": [
         "*://*.stackexchange.com/questions/*",
         "*://stackoverflow.com/questions/*",
@@ -11,6 +12,10 @@
         "*://serverfault.com/questions/*",
         "*://askubuntu.com/questions/*"
     ],
+    "action": {
+        "default_icon": "icon.png",
+        "default_popup": "popup.html"
+    },
     "icons": {
         "128": "icon.png"
     },
@@ -30,7 +35,10 @@
     ],
     "browser_specific_settings": {
         "gecko": {
-            "id": "stackoverfocus@yusacetin.github.io"
+            "id": "stackoverfocus@yusacetin.github.io",
+            "data_collection_permissions": {
+                "required": ["none"]
+            }
         }
     }
 }
