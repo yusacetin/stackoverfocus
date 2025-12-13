@@ -5,5 +5,8 @@ Remove basically everything other than the question, comments, and answers from 
 * [Chrome Web Store](https://chromewebstore.google.com/detail/stackoverfocus/mjllebfkdemhjggocfimgneongmhgmce)
 * [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/stackoverfocus)
 
+### Popup Screenshot
+![StackOverfocus Popup](screenshot.png)
+
 ### License
 GNU General Public License version 3 or later. See LICENSE.txt for more information.
