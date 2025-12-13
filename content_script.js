@@ -14,112 +14,160 @@ const keys = [
     "js-bottom-notice-input"
 ]
 
-function hideRelatedQuestions() {
+function hideRelatedQuestions(hide = true) {
     try {
         var related_questions = document.getElementById("inline_related_var_a_less");
-        related_questions.style.display = 'none';
+        if (hide) {
+            related_questions.style.display = 'none';
+        } else {
+            related_questions.style.display = '';
+        }
     } catch (err) {
         console.log("Unable to hide: inline_related_var_a_less");
     }
 }
 
-function hideMoreRelatedQuestions() {
+function hideMoreRelatedQuestions(hide = true) {
     try {
         var more_related_questions = document.getElementById("inline_related_see_more");
-        more_related_questions.style.display = 'none';
+        if (hide) {
+            more_related_questions.style.display = 'none';
+        } else {
+            more_related_questions.style.display = '';
+        }
     } catch (err) {
         console.log("Unable to hide: inline_related_see_more");
     }
 }
 
-function hideLeftSidebar() {
+function hideLeftSidebar(hide = true) {
     try {
         var left_sidebar_elements = document.getElementsByClassName('left-sidebar');
         for (let i=0; i<left_sidebar_elements.length; i++){
-            left_sidebar_elements[i].style.display = 'none';
+            if (hide) {
+                left_sidebar_elements[i].style.display = 'none';
+            } else {
+                left_sidebar_elements[i].style.display = '';
+            }
         }
     } catch (err) {
         console.log("Unable to hide: left-sidebar");
     }
 }
 
-function hideRightSidebar() {
+function hideRightSidebar(hide = true) {
     try {
         var sidebar_elements = document.getElementById('sidebar');
-        sidebar_elements.style.display = 'none';
+        if (hide) {
+            sidebar_elements.style.display = 'none';
+        } else {
+            sidebar_elements.style.display = '';
+        }
     } catch (err) {
         console.log("Unable to hide: sidebar");
     }
 }
 
-function hideTopBar() {
+function hideTopBar(hide = true) {
     try {
         var topbar = document.getElementsByClassName("s-topbar");
         for (let i=0; i<topbar.length; i++) {
-            topbar[i].style.display = 'none';
+            if (hide) {
+                topbar[i].style.display = 'none';
+            } else {
+                topbar[i].style.display = '';
+            }
         }
     } catch (err) {
         console.log("Unable to hide: s-topbar");
     }
 }
 
-function hideQuestionHeader() {
+function hideQuestionHeader(hide = true) {
     try {
         var question_header = document.getElementById("question-header");
         var ask_button = question_header.getElementsByTagName("div")[0];
-        ask_button.style.display = 'none';
+        if (hide) {
+            ask_button.style.display = 'none';
+        } else {
+            ask_button.style.display = '';
+        }
     } catch (err) {
         console.log("Unable to hide: question-header div");
     }
 }
 
-function hideContentBorder() {
+function hideContentBorder(hide = true) {
     try {
         var content = document.getElementById("content");
-        content.style.border = 'none';
+        if (hide) {
+            content.style.border = 'none';
+        } else {
+            content.style.border = '';
+        }
     } catch (err) {
         console.log("Unable to hide border: content");
     }
 }
 
-function hidePostForm() {
+function hidePostForm(hide = true) {
     try {
         var post_form = document.getElementById("post-form");
-        post_form.style.display = 'none';
+        if (hide) {
+            post_form.style.display = 'none';
+        } else {
+            post_form.style.display = '';
+        }
+        
     } catch (err) {
         console.log("Unable to hide: post-form");
     }
 }
 
-function hideBottomNotice() {
+function hideBottomNotice(hide = true) {
     try {
         var bottom_notice = document.getElementsByClassName("bottom-notice");
         for (let i=0; i<bottom_notice.length; i++) {
-            bottom_notice[i].style.display = 'none';
+            if (hide) {
+                bottom_notice[i].style.display = 'none';
+            } else {
+                bottom_notice[i].style.display = '';
+            }
         }
     } catch (err) {
         console.log("Unable to hide: bottom-notice");
     }
 }
 
-function hideFooter() {
-    try{
+function hideFooter(hide = true) {
+    try {
         var footer = document.getElementById("footer");
-        footer.style.display = 'none';
         var notify_container = document.getElementById("notify-container");
-        notify_container.style.display = 'none';
         var custom_header = document.getElementById("custom-header");
-        custom_header.style.display = 'none';
+        
+        if (hide) {
+            footer.style.display = 'none';
+            notify_container.style.display = 'none';
+            custom_header.style.display = 'none';
+        } else {
+            footer.style.display = '';
+            notify_container.style.display = '';
+            custom_header.style.display = '';
+        }
     } catch (err) {
         console.log("Unable to hide: Footers");
     }
 }
 
-function hideJSConsentBanner() {
+function hideJSConsentBanner(hide = true) {
     try {
         var js_consent_banners = document.getElementsByClassName("js-consent-banner");
         for (let i=0; i<js_consent_banners.length; i++) {
-            js_consent_banners[i].style.display = 'none';
+            if (hide) {
+                js_consent_banners[i].style.display = 'none';
+            } else {
+                js_consent_banners[i].style.display = '';
+            }
         }
     } catch (err) {
         console.log("Unable to hide: js-consent-banner");
@@ -127,22 +175,30 @@ function hideJSConsentBanner() {
 }
 
 // Weird name choice
-function hideJSDismissableHero() {
+function hideJSDismissableHero(hide = true) {
     try {
         var js_dismissable_heros = document.getElementsByClassName("js-dismissable-hero");
         for (let i=0; i<js_dismissable_heros.length; i++) {
-            js_dismissable_heros[i].style.display = 'none';
+            if (hide) {
+                js_dismissable_heros[i].style.display = 'none';
+            } else {
+                js_dismissable_heros[i].style.display = '';
+            }
         }
     } catch (err) {
         console.log("Unable to hide: js-dismissable-hero");
     }
 }
 
-function hideJSBottomNotice() {
+function hideJSBottomNotice(hide = true) {
     try {
         const js_bottom_notices = document.getElementsByClassName("js-bottom-notice");
         for (let i = 0; i<js_bottom_notices.length; i++) {
-            js_bottom_notices[i].style.setProperty("display", "none", "important"); // simply doing style.display = "none" does not work
+            if (hide) {
+                js_bottom_notices[i].style.setProperty("display", "none", "important"); // simply doing style.display = "none" does not work
+            } else {
+                js_bottom_notices[i].style.setProperty("display", "", "important");
+            }
         }
     } catch (err) {
         console.log("Unable to hide: js-bottom-notice");
@@ -173,57 +229,19 @@ async function run() {
                     "js-bottom-notice-input"
                     */
 
-                    if (values["related-questions-input"] != "1") { // use != "1" because if the value is not saved previously it might default to "undefined", in which case we also want to hide
-                        hideRelatedQuestions();
-                    }
-
-                    if (values["more-related-questions-input"] != "1") {
-                        hideMoreRelatedQuestions();
-                    }
-
-                    if (values["left-sidebar-input"] != "1") {
-                        hideLeftSidebar();
-                    }
-
-                    if (values["right-sidebar-input"] != "1") {
-                        hideRightSidebar();
-                    }
-
-                    if (values["top-bar-input"] != "1") {
-                        hideTopBar();
-                    }
-
-                    if (values["question-header-input"] != "1") {
-                        hideQuestionHeader();
-                    }
-
-                    if (values["content-border-input"] != "1") {
-                        hideContentBorder();
-                    }
-
-                    if (values["post-form-input"] != "1") {
-                        hidePostForm();
-                    }
-
-                    if (values["bottom-notice-input"] != "1") {
-                        hideBottomNotice();
-                    }
-
-                    if (values["footer-input"] != "1") {
-                        hideFooter();
-                    }
-
-                    if (values["consent-banner-input"] != "1") {
-                        hideJSConsentBanner();
-                    }
-
-                    if (values["dismissable-hero-input"] != "1") {
-                        hideJSDismissableHero();
-                    }
-
-                    if (values["js-bottom-notice-input"] != "1") {
-                        hideJSBottomNotice();
-                    }
+                    hideRelatedQuestions(values["related-questions-input"] != "1"); // use != "1" because if the value is not saved previously it might default to "undefined", in which case we also want to hide
+                    hideMoreRelatedQuestions(values["more-related-questions-input"] != "1");
+                    hideLeftSidebar(values["left-sidebar-input"] != "1");
+                    hideRightSidebar(values["right-sidebar-input"] != "1");
+                    hideTopBar(values["top-bar-input"] != "1");
+                    hideQuestionHeader(values["question-header-input"] != "1");
+                    hideContentBorder(values["content-border-input"] != "1");
+                    hidePostForm(values["post-form-input"] != "1");
+                    hideBottomNotice(values["bottom-notice-input"] != "1");
+                    hideFooter(values["footer-input"] != "1");
+                    hideJSConsentBanner(values["consent-banner-input"] != "1");
+                    hideJSDismissableHero(values["dismissable-hero-input"] != "1");
+                    hideJSBottomNotice(values["js-bottom-notice-input"] != "1");
 
                     // Make page visible again (it loads as invisible through content_style.css)
                     var page = document.getElementsByTagName('html')[0];
@@ -233,9 +251,15 @@ async function run() {
         } catch(exc) {
             console.log(exc);
         }
-    })
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     run();
+
+    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+        if (request.action === "refresh") {
+            run();
+        }
+    });
 });

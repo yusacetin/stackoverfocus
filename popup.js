@@ -71,13 +71,26 @@ async function getAndDisplaySavedValues() {
     });
 }
 
+function sendMessageToContentScript() {
+    chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+        const activeTab = tabs[0];
+        chrome.tabs.sendMessage(
+            activeTab.id, 
+            {action: "refresh"},
+            (response) => {}
+        );
+    });
+}
+
 window.onload = () => {
     document.getElementById("hide-all-button").addEventListener("click", () => {
         hideAllButtonClicked();
+        sendMessageToContentScript();
     });
 
     document.getElementById("show-all-button").addEventListener("click", () => {
         showAllButtonClicked();
+        sendMessageToContentScript();
     });
 
     for (let i = 0; i < checkboxes.length; i++) {
@@ -85,6 +98,7 @@ window.onload = () => {
         const elem = document.getElementById(key);
         elem.addEventListener("change", () => {
             saveAllValues();
+            sendMessageToContentScript();
         });
     }
 
