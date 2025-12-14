@@ -76,9 +76,8 @@ function sendMessageToContentScript() {
         const activeTab = tabs[0];
         chrome.tabs.sendMessage(
             activeTab.id, 
-            {action: "refresh"},
-            (response) => {}
-        );
+            {action: "refresh"}
+        ).catch(() => {});
     });
 }
 
