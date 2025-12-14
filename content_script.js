@@ -3,11 +3,16 @@ const keys = [
     "more-related-questions-input",
     "left-sidebar-input",
     "right-sidebar-input",
+    "subcommunity-input",
+    "blog-input",
+    //"community-input",
+    "hot-input",
+    "feed-input",
     "top-bar-input",
     "question-header-input",
     "content-border-input",
     "post-form-input",
-    "bottom-notice-input",
+    //"bottom-notice-input",
     "footer-input",
     "consent-banner-input",
     "dismissable-hero-input",
@@ -24,6 +29,22 @@ function hideRelatedQuestions(hide = true) {
         }
     } catch (err) {
         console.log("Unable to hide: inline_related_var_a_less");
+    }
+
+    try {
+        const related_questions_sidebar = document.getElementsByClassName("module sidebar-related");
+        console.log("rel len: " + related_questions_sidebar.length);
+        for (let i = 0; i < related_questions_sidebar.length; i++) {
+            const elem = related_questions_sidebar[i];
+            console.log(elem);
+            if (hide) {
+                elem.style.display = "none";
+            } else {
+                elem.style.display = "";
+            }
+        }
+    } catch (err) {
+        console.log("Unable to hide: sidebar-related");
     }
 }
 
@@ -68,6 +89,79 @@ function hideRightSidebar(hide = true) {
     }
 }
 
+function hideSubcommunity(hide = true) {
+    try {
+        var sidebar_elements = document.getElementById('sidebar');
+        const subcommunity_elems = sidebar_elements.getElementsByClassName("sidebar-subcommunity mb16");
+        for (let i = 0; i < subcommunity_elems.length; i++) {
+            const elem = subcommunity_elems[i];
+            if (hide) {
+                elem.style.display = 'none';
+            } else {
+                elem.style.display = '';
+            }
+        }
+    } catch (err) {
+        console.log("Unable to hide: sidebar");
+    }
+}
+
+function hideBlog(hide = true) {
+    try {
+        var sidebar_elements = document.getElementById('sidebar');
+        const blog_elems = sidebar_elements.getElementsByClassName("s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__grayscale mb16");
+        for (let i = 0; i < blog_elems.length; i++) {
+            const elem = blog_elems[i];
+            if (hide) {
+                elem.style.display = 'none';
+            } else {
+                elem.style.display = '';
+            }
+        }
+    } catch (err) {
+        console.log("Unable to hide: sidebar");
+    }
+}
+
+function hideCommunity(hide = true) {
+    try {
+        const elem = document.getElementById("fragment-container-580-215-wrapper");
+        if (hide) {
+            elem.style.display = 'none';
+        } else {
+            elem.style.display = '';
+        }
+    } catch (err) {
+        console.log("Unable to hide: sidebar");
+    }
+}
+
+function hideHot(hide = true) {
+    try {
+        const elem = document.getElementById("hot-network-questions");
+        if (hide) {
+            elem.style.display = "none";
+        } else {
+            elem.style.display = "";
+        }
+    } catch (err) {
+        console.log("Unable to hide: hot-network-questions")
+    }
+}
+
+function hideFeed(hide = true) {
+    try {
+        const elem = document.getElementById("feed-link");
+        if (hide) {
+            elem.style.display = "none";
+        } else {
+            elem.style.display = "";
+        }
+    } catch (err) {
+        console.log("Unable to hide: feed-link")
+    }
+}
+
 function hideTopBar(hide = true) {
     try {
         var topbar = document.getElementsByClassName("s-topbar");
@@ -86,11 +180,11 @@ function hideTopBar(hide = true) {
 function hideQuestionHeader(hide = true) {
     try {
         var question_header = document.getElementById("question-header");
-        var ask_button = question_header.getElementsByTagName("div")[0];
+        var ask_button = question_header.getElementsByClassName("ml12 aside-cta flex--item sm:ml0 sm:mb12 sm:order-first d-flex jc-end")[0];
         if (hide) {
-            ask_button.style.display = 'none';
+            ask_button.style.setProperty("display", "none", "important");
         } else {
-            ask_button.style.display = '';
+            ask_button.style.setProperty("display", "", "important");
         }
     } catch (err) {
         console.log("Unable to hide: question-header div");
@@ -124,6 +218,8 @@ function hidePostForm(hide = true) {
     }
 }
 
+/*
+// They apparently removed this from the website
 function hideBottomNotice(hide = true) {
     try {
         var bottom_notice = document.getElementsByClassName("bottom-notice");
@@ -138,6 +234,7 @@ function hideBottomNotice(hide = true) {
         console.log("Unable to hide: bottom-notice");
     }
 }
+*/
 
 function hideFooter(hide = true) {
     try {
@@ -218,6 +315,11 @@ async function run() {
                     "more-related-questions-input",
                     "left-sidebar-input",
                     "right-sidebar-input",
+                    "subcommunity-input",
+                    "blog-input",
+                    "community-input",
+                    "hot-input",
+                    "feed-input",
                     "top-bar-input",
                     "question-header-input",
                     "content-border-input",
@@ -233,11 +335,16 @@ async function run() {
                     hideMoreRelatedQuestions(values["more-related-questions-input"] != "1");
                     hideLeftSidebar(values["left-sidebar-input"] != "1");
                     hideRightSidebar(values["right-sidebar-input"] != "1");
+                    hideSubcommunity(values["subcommunity-input"] != "1");
+                    hideBlog(values["blog-input"] != "1");
+                    //hideCommunity(values["community-input"] != "1");
+                    hideHot(values["hot-input"] != "1");
+                    hideFeed(values["feed-input"] != "1");
                     hideTopBar(values["top-bar-input"] != "1");
                     hideQuestionHeader(values["question-header-input"] != "1");
                     hideContentBorder(values["content-border-input"] != "1");
                     hidePostForm(values["post-form-input"] != "1");
-                    hideBottomNotice(values["bottom-notice-input"] != "1");
+                    //hideBottomNotice(values["bottom-notice-input"] != "1");
                     hideFooter(values["footer-input"] != "1");
                     hideJSConsentBanner(values["consent-banner-input"] != "1");
                     hideJSDismissableHero(values["dismissable-hero-input"] != "1");

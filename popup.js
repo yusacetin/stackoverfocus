@@ -3,11 +3,16 @@ const checkboxes = [
     "more-related-questions-input",
     "left-sidebar-input",
     "right-sidebar-input",
+    "subcommunity-input",
+    "blog-input",
+    //"community-input",
+    "hot-input",
+    "feed-input",
     "top-bar-input",
     "question-header-input",
     "content-border-input",
     "post-form-input",
-    "bottom-notice-input",
+    //"bottom-notice-input",
     "footer-input",
     "consent-banner-input",
     "dismissable-hero-input",
@@ -40,7 +45,6 @@ function saveAllValues() {
         const key = checkboxes[i];
         const elem = document.getElementById(key);
         const value = elem.checked ? "1" : "0";
-        console.log({[key]: value});
         chrome.storage.local.set({[key]: value});
     }
 }
