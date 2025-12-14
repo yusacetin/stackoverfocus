@@ -81,23 +81,6 @@ button:active {
     margin-top: 0.5em;
 }
 
-input {
-    font-size: 1em;
-    width: 10em;
-    border-radius: 8px;
-    padding: 2px 6px;
-    margin-left: 5px;
-    outline: none;
-    border: #525254 solid 2px;
-    background-color: #323234;
-    color: #FAFAFA;
-    font-family: "Noto Sans", sans-serif;
-}
-
-input:focus {
-    border: rgb(25, 118, 210) solid 2px;
-}
-
 .textbox {
     width: 5em;
     display: flex;
@@ -120,11 +103,11 @@ input[type="checkbox"]::after {
     content: "";
     position: absolute;
     top: 50%;
-    left: 30%;
+    left: 25%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    height: 1.1rem;
-    width: 1.1rem;
+    height: 1.45em;
+    width: 1.45em;
     background-color: rgb(250, 250, 250);
     transition: left .1s;
 }
@@ -134,5 +117,5 @@ input:checked {
 }
 
 input:checked::after {
-    left: 70%;
+    left: 75%;
 }
